@@ -9,6 +9,8 @@
 name: Java CI with Maven
 
 on:
+  # Jenkins: Polling SCM every 4 minutes for changes
+  # Trigger on push or pr to master branch
   push:
     branches: [ "master" ]
   pull_request:
@@ -18,14 +20,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
-        distribution: 'temurin'
+        java-version: '8.0.161'
+        distribution: 'zulu'
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
