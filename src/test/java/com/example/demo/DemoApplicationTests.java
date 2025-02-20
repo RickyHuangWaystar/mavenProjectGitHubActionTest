@@ -10,4 +10,9 @@ class DemoApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void unitAddition(){
+		assert TestClass.addition(1,2) == 3;
+	}
+
 }
