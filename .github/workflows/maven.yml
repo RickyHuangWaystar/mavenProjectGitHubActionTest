@@ -13,8 +13,8 @@ on:
   # Trigger on push or pr to master branch
   push:
     branches: [ "master" ]
-  #pull_request:
-   # branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
   #workflow_dispatch:
 
 jobs:
