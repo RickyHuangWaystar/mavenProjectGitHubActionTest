@@ -8,13 +8,14 @@
 
 name: Java CI with Maven
 
-on: [push,pull_request]
+on: 
+  # [push,pull_request]
   # Jenkins: Polling SCM every 4 minutes for changes
   # Trigger on push or pr to master branch
-  #push:
-  #  branches: [ "master" ]
-  #pull_request:
-  #  branches:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
   #workflow_dispatch:
 
 permissions:
@@ -44,15 +45,12 @@ jobs:
     - name: Build with Maven
       run: mvn clean install -U verify  
       
-    - name: Publish test coverage results
-      uses: PavanMudigonda/jacoco-reporter@v4.8
+    - name: Deploy JaCoCo report to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        coverage_results_path: 'target/site/jacoco/jacoco.xml'
-        coverage_report_title: 'Test coverage results'
-        coverage_report_name: 'Test coverage results'
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-
-     
+        branch: gh-pages
+        folder: target/site/jacoco
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
