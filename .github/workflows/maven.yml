@@ -51,6 +51,9 @@ jobs:
       with:
         file: target/site/jacoco/jacoco.xml  # Path to the JaCoCo XML report
         output: target/site/jacoco-report 
+        token: ${{ secrets.GITHUB_TOKEN }}
+        min-coverage-overall: 40
+        min-coverage-changed-files: 60
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
