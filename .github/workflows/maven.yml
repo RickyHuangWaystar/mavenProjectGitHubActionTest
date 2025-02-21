@@ -8,13 +8,13 @@
 
 name: Java CI with Maven
 
-on:
+on: [push,pull_request]
   # Jenkins: Polling SCM every 4 minutes for changes
   # Trigger on push or pr to master branch
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  #push:
+  #  branches: [ "master" ]
+  #pull_request:
+  #  branches:
   #workflow_dispatch:
 
 permissions:
