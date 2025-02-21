@@ -47,7 +47,7 @@ jobs:
       run: mvn clean install -U verify  
       
     - name: Generate JaCoCo Report
-      uses: madrapps/jacoco-report@v1
+      uses: madrapps/jacoco-report@v1.7.1
       with:
         path: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
