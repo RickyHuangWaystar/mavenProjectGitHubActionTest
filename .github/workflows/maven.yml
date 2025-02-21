@@ -31,16 +31,20 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install -U verify  
-    - name: Add coverage to PR
-      id: jacoco
-      uses: madrapps/jacoco-report@v1.7.1
+    - name: Upload JaCoCo report
+      uses: actions/upload-artifact@v2
       with:
-        paths: |
-          ${{ github.workspace }}/**/build/reports/jacoco/prodNormalDebugCoverage/prodNormalDebugCoverage.xml,
-          ${{ github.workspace }}/**/build/reports/jacoco/**/debugCoverage.xml
+        name: jacoco-report
+        path: target/site/jacoco/jacoco.xml
+
+    - name: Add coverage to PR
+      uses: madrapps/jacoco-report@v1.2
+      with:
+        paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
-        min-coverage-overall: 40
-        min-coverage-changed-files: 60
+        min-coverage-overall: 80
+        min-coverage-changed-files: 80
+        title: Code Coverage
 
      
 
