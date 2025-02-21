@@ -13,7 +13,7 @@ public class DemoApplicationTests {
 
 	@Test
 	public void unitAddition(){
-		assert TestClass.addition(1,2) == 3;
+		assert MathFunctions.addition(1,2) == 3;
 	}
 
 }

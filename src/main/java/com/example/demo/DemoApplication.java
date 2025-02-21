@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		int sum = TestClass.addition(1,2);
+		int sum = MathFunctions.addition(1,2);
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
