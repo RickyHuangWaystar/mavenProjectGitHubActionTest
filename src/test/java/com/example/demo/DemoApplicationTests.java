@@ -7,13 +7,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class DemoApplicationTests {
 
+
 	@Test
-	public void contextLoads() {
+	public void testAddition(){
+		assert MathFunctions.addition(1,2) == 3;
 	}
 
 	@Test
-	public void unitAddition(){
-		assert MathFunctions.addition(1,2) == 3;
+	public void testSubtraction(){
+		assert MathFunctions.subtraction(2,1) == 1;
 	}
 
 }
