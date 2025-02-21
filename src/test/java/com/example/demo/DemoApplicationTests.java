@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class DemoApplicationTests {
 
-
 	@Test
 	public void testAddition(){
 		assert MathFunctions.addition(1,2) == 3;
