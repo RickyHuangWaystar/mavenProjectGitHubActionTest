@@ -24,19 +24,17 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Get Commits for the Last 90 Days
-
+    - name: Get Commits for the Last 7 Days
+        
       run: |
-        git log --since='7 days ago' --pretty=format:'%h %an %s' > commits_last_90_days.log
-
-
+        git log --since='7 days ago' --pretty=format:'%h %an %s' > commits.txt
 
 
     - name: Upload Commit Log as Artifact
       uses: actions/upload-artifact@v4
       with:
         name: commits_last_90_days
-        path: commits_last_90_days.log
+        path: commits.txt
 
         
         
