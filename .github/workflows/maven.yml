@@ -31,7 +31,7 @@ jobs:
         
         # Fetch commits for the last 90 days and write to a log file
         #git log --since="$START_DATE" --pretty=format:"%h %an %ad %s" --date=short > commits_last_90_days.log
-        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files: %b%n" --date=short > commits_last_90_days_detailed.log
+        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files: %b%n" --date=short > commits_last_90_days.log
         
         # Display the log to verify
         cat commits_last_90_days.log
