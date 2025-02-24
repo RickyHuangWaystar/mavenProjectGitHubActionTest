@@ -24,47 +24,22 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Set up Git
+    - name: Get Commits for the Last 90 Days
       run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        # Calculate the date 90 days ago
+        START_DATE=$(date +"%Y-%m-%d" -d "-90 days")
+        
+        # Fetch commits for the last 90 days and write to a log file
+        git log --since="$START_DATE" --pretty=format:"%h %an %ad %s" --date=short > commits_last_90_days.log
+        
+        # Display the log to verify
+        cat commits_last_90_days.log
 
-    - name: Run script
-      env:
-        GITHUB_URL: ${{ secrets.GITHUB_URL }}
-      run: |
-        # Fetch the latest commit hash
-        LATEST_COMMIT_HASH=$(git ls-remote $GITHUB_URL refs/heads/main | awk '{print $1}')
-
-        # Parse the GitHub URL
-        PARSED_PATH=$(echo $GITHUB_URL | sed 's#.*/##')
-        echo "PARSED_PATH = " $PARSED_PATH
-
-        SERVICE_NAME=$(echo $PARSED_PATH | sed 's/\/.*$//')
-        echo "SERVICE_NAME = " $SERVICE_NAME
-
-        # Rename actions to match the expected name format
-        if [ "$SERVICE_NAME" == "portal" ] ; then
-            SERVICE_NAME="portal-entrypoint"
-        fi
-
-        if [ "$SERVICE_NAME" == "gridDal" ] ; then
-            SERVICE_NAME="gridDalService"
-        fi
-
-        # Define the start date range for logs (90 days ago)
-        GIT_START_DATE=$(date -d "-90 days" +"%Y-%m-%d")
-
-        # Clone the repository
-        git clone $GITHUB_URL
-        cd $(basename $GITHUB_URL .git)
-
-        # Save logs to a file
-        git log --since="$GIT_START_DATE" --until="now" --pretty=format:"%h %ad | %s%d [%an]" --date=short > git_$SERVICE_NAME.$LATEST_COMMIT_HASH.log
-
-        GIT_ARGS="log --since=\"$GIT_START_DATE\" --until=\"now\" --pretty=format:\"%h %ad | %s%d [%an]\" --date=short"
-        echo "GIT_ARGS = " $GIT_ARGS
-
+    - name: Upload Commit Log as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: commits_last_90_days
+        path: commits_last_90_days.log
 
         
         
