@@ -8,13 +8,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-  workflow_dispatch:
+  workflow_dispatch: # Run manually
 
-#permissions:
-#  contents: write
-#  checks: write
-  
-# 
+# JOBS
 jobs:
   build:
     # GitHub-hosted Runner
@@ -36,16 +32,26 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
-    
+    # Jenkins: clean install -U -P test-coverage
+    # TODO What is test-coverage profile
+    # TODO What is GlobalRecondoMavenSettings.xml
+    # BUILD, RUN UNIT TEST, RUN JaCoCo, Run Dependency Check
     - name: Build with Maven
       run: mvn clean install -U
-      
-    - name: Upload JaCoCo report as artifact
+
+    # JENKINS: Post steps: Run only if build is succee
+    # By default, a GitHub Actions workflow will stop if a step fails
+    # JENKINS: Set email notifcation to specific receipents.
+    # GITHUB: Only sends email to the receipent who triggered the workflow.
+
+    # Code Coverage Report
+    - name: Upload JaCoCo Code Coverage Report
       uses: actions/upload-artifact@v4
       with:
         name: jacoco-report
         path: target/site/jacoco/
 
+    # Depdendency Vulnerability Analysis
     - name: Upload Dependency Check Report
       uses: actions/upload-artifact@v4
       with:
@@ -53,4 +59,6 @@ jobs:
         path: target/dependency-check-report.html
         if-no-files-found: error
         retention-days: 90
+
+    # TODO DEPLOY ARTIFACTS to Artifcatory
 
