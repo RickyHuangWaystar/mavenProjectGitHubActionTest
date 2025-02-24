@@ -17,4 +17,9 @@ public class DemoApplicationTests {
 		assert MathFunctions.subtraction(2,1) == 1;
 	}
 
+	@Test
+	public void testMultiplication(){
+		assert 4 * 4 == 16;
+	}
+
 }
