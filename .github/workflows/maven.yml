@@ -28,13 +28,16 @@ jobs:
       run: |
         # Calculate the date 90 days ago
         START_DATE=$(date --date="90 days ago" +"%Y-%m-%d")
-        echo "Start Date: $START_DATE"  # Print the start date to debug
+        
+        # Print the calculated start date for debugging
+        echo "Fetching commits since: $START_DATE"
         
         # Fetch commits for the last 90 days and write to a log file
-        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" --date=short --name-only | awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " - "$0}}' > commits_last_90_days.log
+        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" --date=short --name-only > commits_last_90_days.log
         
         # Display the log to verify
         cat commits_last_90_days.log
+
 
 
     - name: Upload Commit Log as Artifact
