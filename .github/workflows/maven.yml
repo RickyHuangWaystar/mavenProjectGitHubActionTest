@@ -31,7 +31,7 @@ jobs:
     # Jenkins: GET_SVN_LOG.sh - script gets last 90 days of checkins and writes them to a file called: "svn_" + {service name} + "." + {svn revision #} + ".log"
     - name: Get Commits for the Last 90 Days
       run: |
-        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" --date=short --name-only | awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " "$0}}' > commits_last_90_days.log
+        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" --date=short --name-only | awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " - "$0}}' > commits_last_90_days.log
     - name: Upload Commit Log as Artifact
       uses: actions/upload-artifact@v4
       with:
