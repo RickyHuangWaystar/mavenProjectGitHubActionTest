@@ -30,8 +30,7 @@ jobs:
         START_DATE=$(date +"%Y-%m-%d" -d "-90 days")
         
         # Fetch commits for the last 90 days and write to a log file
-        #git log --since="$START_DATE" --pretty=format:"%h %an %ad %s" --date=short > commits_last_90_days.log
-        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s" --date=short --name-status > commits_last_90_days.log
+        git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s" --date=short --name-only > commits_last_90_days.log
         
         # Display the log to verify
         cat commits_last_90_days.log
@@ -52,8 +51,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
-    # Jenkins: clean install -U -P test-coverage
-    # TODO What is test-coverage profile
+    # Jenkins: clean install -U
     # TODO What is GlobalRecondoMavenSettings.xml
     # BUILD, RUN UNIT TEST, RUN JaCoCo, Run Dependency Check
     - name: Build with Maven
