@@ -48,7 +48,7 @@ jobs:
     - name: Upload JaCoCo Code Coverage Report
       uses: actions/upload-artifact@v4
       with:
-        name: jacoco-report
+        name: JaCoCo Code Coverage Report
         path: target/site/jacoco/
 
     # Depdendency Vulnerability Analysis
