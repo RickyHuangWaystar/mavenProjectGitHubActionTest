@@ -36,7 +36,7 @@ jobs:
         cat commits_last_90_days.log
 
     - name: Upload Commit Log as Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: commits_last_90_days
         path: commits_last_90_days.log
