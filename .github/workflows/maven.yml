@@ -39,7 +39,7 @@ jobs:
                 --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" \
                 --date=short \
                 --name-only | \
-                awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " "$0}}' > commits_last_90_days.log
+                awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " - "$0}}' > commits_last_90_days.log
     - name: Upload Commit Log as Artifact
       uses: actions/upload-artifact@v4
       with:
