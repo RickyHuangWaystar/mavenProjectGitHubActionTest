@@ -24,22 +24,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-name: Run SVN to GitHub Migration Script
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-jobs:
-  run-script:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
     - name: Set up Git
       run: |
         git config --global user.name 'github-actions[bot]'
