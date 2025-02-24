@@ -14,7 +14,7 @@ public class DemoApplicationTests {
 
 	@Test
 	public void testSubtraction(){
-		assert MathFunctions.subtraction(2,1) == 1;
+		assert MathFunctions.subtraction(2,1) == 100;
 	}
 
 }
