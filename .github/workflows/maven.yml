@@ -44,7 +44,7 @@ jobs:
     - name: Upload Commit Log as Artifact
       uses: actions/upload-artifact@v4
       with:
-        name:  ${{ github.event.repository.name }} Commits Last 90 Days Log
+        name: ${{ github.event.repository.name }} Commits Last 90 Days Log
         path: ${{ github.event.repository.name }}_commits_last_90_days.log
 
     # Jenkins: clean install -U
