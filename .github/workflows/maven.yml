@@ -70,7 +70,9 @@ jobs:
       with:
         name: JaCoCo Code Coverage Report
         path: target/site/jacoco/
-
+        if-no-files-found: error
+        retention-days: 90  
+    # DEFAULT 90 days, Enterprise can confiture up to 400 days
     # Depdendency Vulnerability Analysis
     - name: Upload Dependency Check Report
       uses: actions/upload-artifact@v4
@@ -78,7 +80,7 @@ jobs:
         name: Dependency Check Report
         path: target/dependency-check-report.html
         if-no-files-found: error
-        retention-days: 90
+        retention-days: 90  
 
     # TODO DEPLOY ARTIFACTS to Artifcatory
 
