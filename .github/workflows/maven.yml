@@ -1,14 +1,11 @@
 name: Java CI with Maven
 
-# TRIGGERS
+
 on: 
-  # Jenkins: Polling SCM every 4 minutes for changes
-  # Trigger on push or pr to master branch
+  # Jenkins Build Trigger: Polling SCM every 4 minutes for changes
+  # GitHub Action: Trigger on push to master branch.
   push:
     branches: [ "master" ]
-  #pull_request:
-  #  branches: [ "master" ]
-  #workflow_dispatch: # Run manually
 
 # JOBS
 jobs:
@@ -20,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4 
       with:
-        fetch-depth: '0'
+        fetch-depth: '0' # To get all commit history
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
