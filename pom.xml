@@ -12,6 +12,7 @@
 	<groupId>services</groupId>
 	<artifactId>accountEventdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>Account Event Service DEMO</name>
 	<description>Demo project for Recondo Maven</description>
 
