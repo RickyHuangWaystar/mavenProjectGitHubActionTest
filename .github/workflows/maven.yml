@@ -79,8 +79,11 @@ jobs:
     # TODO DEPLOY ARTIFACTS to Artifcatory
     - name: Setup JFrog CLI
       uses: jfrog/setup-jfrog-cli@v4
-
-    - name: Configure JFrog CLI
-      run: |
-        jfrog rt config --url ${{ secrets.JFROG_URL }} --user ${{ secrets.JFROG_USER }} --password ${{ secrets.JFROG_PASSWORD }}
-
+      with:
+        version: latest
+      env:
+        # JFrog Platform url and authentication credentials
+        JF_URL: ${{ vars.JFROG_URL }}
+        JF_USER: ${{ secrets.JFROG_USER }}
+        JF_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
+            
