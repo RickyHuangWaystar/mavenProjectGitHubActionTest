@@ -77,6 +77,10 @@ jobs:
         retention-days: 90  
 
     # TODO DEPLOY ARTIFACTS to Artifcatory
-    - name: Testing JFrog CLI
+    - name: Setup JFrog CLI
       uses: jfrog/setup-jfrog-cli@v4
+
+    - name: Configure JFrog CLI
+      run: |
+        jfrog rt config --url ${{ secrets.JFROG_URL }} --user ${{ secrets.JFROG_USER }} --password ${{ secrets.JFROG_PASSWORD }}
 
