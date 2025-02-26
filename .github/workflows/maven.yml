@@ -91,7 +91,7 @@ jobs:
     - name: maven build
       run: |
             jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT} # mention the names of your release and snapshot repos within the jfrog artifacory
-            jf mvn deploy
+            jf mvn deploy --deployArtifacts=true
             jf rt bp # (optional, deploy build info, use --dry-run flag to see the build info in console without committing it)
       
           
