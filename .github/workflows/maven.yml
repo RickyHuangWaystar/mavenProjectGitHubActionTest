@@ -77,4 +77,6 @@ jobs:
         retention-days: 90  
 
     # TODO DEPLOY ARTIFACTS to Artifcatory
+    - name: Testing JFrog CLI
+      uses: jfrog/setup-jfrog-cli@v4
 
