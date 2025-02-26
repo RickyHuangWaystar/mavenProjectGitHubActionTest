@@ -36,6 +36,7 @@
 		<jacoco.version>0.8.3</jacoco.version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<dependency-check-maven.version>5.2.3</dependency-check-maven.version>
+		<maven-war-plugin.version>3.1.0</maven-war-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -127,6 +128,16 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<packagingExcludes>WEB-INF/classes/${project.artifactId}.properties,WEB-INF/classes/log4j2.xml
+					</packagingExcludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
