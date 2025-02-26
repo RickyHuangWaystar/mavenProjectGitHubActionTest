@@ -4,6 +4,7 @@ on:
   # GitHub Action: Trigger on push to master branch.
   push:
     branches: [ "master" ]
+  workflow_dispatch: # Allow you to manually trigger work flow
 
 jobs:
   build:
