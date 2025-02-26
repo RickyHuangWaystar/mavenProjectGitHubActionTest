@@ -86,4 +86,5 @@ jobs:
         JF_URL: ${{ vars.JFROG_URL }}
         JF_USER: ${{ secrets.JFROG_USER }}
         JF_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
+        
             
