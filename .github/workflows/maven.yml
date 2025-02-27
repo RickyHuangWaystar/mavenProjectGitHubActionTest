@@ -91,7 +91,10 @@ jobs:
     - name: maven build
       run: |
             jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
-            jf mvn deploy
-            #jf rt bp # (optional, deploy build info, use --dry-run flag to see the build info in console without committing it)
+            mvn clean install  # This is assuming you are using Maven for building
 
+    - name: Deploy to JFrog Artifactory
+      run: |
+          jf rt mvn "clean install" deploy --build-name=my-build --build-number=${GITHUB_RUN_ID}
+          jf rt build-publish my-build ${{ github.sha }} --url=${{ secrets.JFROG_URL }} --user=${{ secrets.JFROG_USER }} --password=${{ secrets.JFROG_PASSWORD }}
           
