@@ -154,11 +154,15 @@ jobs:
         JF_USER: ${{ secrets.JFROG_USER }}
         JF_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
 
-    - name: maven build
+    #- name: maven build
+    #  run: |
+    - name: Deploy to Artifactory
       run: |
-         run: mvn deploy -DskipTests
-      
-            #jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
+        jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
+        jfrog rt mvn clean install deploy -s settings.xml -Dartifactory.publish.artifacts=true
+
+
+            
             #jfrog rt mvn clean install deploy -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
             #jf mvn deploy
             #jf rt bp
