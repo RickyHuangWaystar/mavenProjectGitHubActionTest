@@ -91,10 +91,14 @@ jobs:
     - name: maven build
       run: |
             jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
-            mvn clean install  # This is assuming you are using Maven for building
+     #       mvn clean install  # This is assuming you are using Maven for building
 
-    - name: Deploy to JFrog Artifactory
+    - name: Build the project (if needed)
       run: |
-          jf rt mvn "clean install" deploy --build-name=my-build --build-number=${GITHUB_RUN_ID}
-          jf rt build-publish my-build ${{ github.sha }} --url=${{ secrets.JFROG_URL }} --user=${{ secrets.JFROG_USER }} --password=${{ secrets.JFROG_PASSWORD }}
-          
+        # Replace with your build steps (for example, Maven, Gradle, etc.)
+        mvn clean package  # Assuming you are using Maven to build your artifact
+
+    - name: Upload artifact to Artifactory
+      run: |
+        jfrog rt upload "target/my-artifact-1.0.0.jar" "libs-release-local/com/mycompany/my-artifact/1.0.0/my-artifact-1.0.0.jar"
+        # Adjust the paths as per your needs
