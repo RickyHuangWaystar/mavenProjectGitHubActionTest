@@ -100,5 +100,5 @@ jobs:
 
     - name: Upload artifact to Artifactory
       run: |
-        jfrog rt upload "target/my-artifact-1.0.0.jar" "libs-release-local/com/mycompany/my-artifact/1.0.0/my-artifact-1.0.0.jar"
+        jfrog rt upload "accountEventdemo-0.0.1-SNAPSHOT.war" "libs-release-local/com/mycompany/my-artifact/1.0.0/my-artifact-1.0.0.jar"
         # Adjust the paths as per your needs
