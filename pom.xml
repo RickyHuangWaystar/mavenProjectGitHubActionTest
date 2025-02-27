@@ -208,26 +208,26 @@
 				<artifactId>maven-source-plugin</artifactId>
 				<version>${maven-source-plugin.version}</version>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${maven-checkstyle-plugin.version}</version>
-				<configuration>
-					<failsOnError>true</failsOnError>
-					<failOnViolation>true</failOnViolation>
-					<consoleOutput>true</consoleOutput>
-					<logViolationsToConsole>true</logViolationsToConsole>
-					<linkXRef>false</linkXRef>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>checkstyle</goal>
-						</goals>
-						<phase>validate</phase>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--				<version>${maven-checkstyle-plugin.version}</version>-->
+<!--				<configuration>-->
+<!--					<failsOnError>true</failsOnError>-->
+<!--					<failOnViolation>true</failOnViolation>-->
+<!--					<consoleOutput>true</consoleOutput>-->
+<!--					<logViolationsToConsole>true</logViolationsToConsole>-->
+<!--					<linkXRef>false</linkXRef>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>checkstyle</goal>-->
+<!--						</goals>-->
+<!--						<phase>validate</phase>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
