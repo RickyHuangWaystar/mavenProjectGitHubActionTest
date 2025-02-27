@@ -92,7 +92,7 @@ jobs:
 
       # Upload Maven build artifacts to GitHub Actions Artifacts
     - name: Upload settings file artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: maven-artifacts
         path: |
