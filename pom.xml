@@ -9,6 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
+			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
+		</repository>
+	</distributionManagement>
+
 	<groupId>services</groupId>
 	<artifactId>accountEventdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
