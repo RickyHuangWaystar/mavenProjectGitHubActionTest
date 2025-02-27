@@ -158,7 +158,8 @@ jobs:
     #  run: |
     - name: Deploy to Artifactory
       run: |
-        jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
+        #jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
+        jf mvn-config --repo-deploy-releases=https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release --repo-deploy-snapshots=https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot
         jf rt mvn clean install deploy -DskipTests -s ~/.m2/settings.xml -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
 
 
