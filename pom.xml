@@ -9,13 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<distributionManagement>
-		<repository>
-			<id>central</id>
-			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
-			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
-		</repository>
-	</distributionManagement>
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<id>central</id>-->
+<!--			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>-->
+<!--			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>-->
+<!--		</repository>-->
+<!--	</distributionManagement>-->
 
 	<groupId>services</groupId>
 	<artifactId>accountEventdemo</artifactId>
@@ -45,6 +45,8 @@
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<dependency-check-maven.version>5.2.3</dependency-check-maven.version>
 		<maven-war-plugin.version>3.1.0</maven-war-plugin.version>
+		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -146,6 +148,16 @@
 					<packagingExcludes>WEB-INF/classes/${project.artifactId}.properties,WEB-INF/classes/log4j2.xml
 					</packagingExcludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven-deploy-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>${maven-install-plugin.version}</version>
 			</plugin>
 		</plugins>
 	</build>
