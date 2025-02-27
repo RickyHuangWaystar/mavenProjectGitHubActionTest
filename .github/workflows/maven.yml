@@ -118,7 +118,7 @@ jobs:
     # TODO What is GlobalRecondoMavenSettings.xml
     # BUILD, RUN UNIT TEST, RUN JaCoCo, Run Dependency Check
     - name: Build with Maven
-      run: mvn clean install -U -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
+      run: mvn clean install deploy -U -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
 
     # JENKINS: Post steps: Run only if build is succee
     # By default, a GitHub Actions workflow will stop if a step fails
