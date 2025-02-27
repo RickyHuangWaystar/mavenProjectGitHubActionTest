@@ -15,8 +15,25 @@
 			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
 		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>a0s952rz19mzu-artifactory-primary-0-snapshots</name>
+			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>
+		</snapshotRepository>
 	</distributionManagement>
 
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
+			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
+		</repository>
+		<repository>
+			<id>snapshots</id>
+			<name>a0s952rz19mzu-artifactory-primary-0-snapshots</name>
+			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>
+		</repository>
+	</repositories>
 
 
 	<groupId>services</groupId>
