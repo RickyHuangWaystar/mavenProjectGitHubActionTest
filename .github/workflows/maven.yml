@@ -90,6 +90,15 @@ jobs:
         echo "  </activeProfiles>" >> ~/.m2/settings.xml
         echo "</settings>" >> ~/.m2/settings.xml
 
+      # Upload Maven build artifacts to GitHub Actions Artifacts
+    - name: Upload settings file artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: maven-artifacts
+        path: |
+          ~/.m2/settings.xml
+         
+
     # Jenkins Prestep: GET_SVN_LOG.sh - script gets last 90 days of checkins and writes them to a 
     # file called: "svn_" + {service name} + "." + {svn revision #} + ".log"
     # GHA: Run git log to get the 90 
