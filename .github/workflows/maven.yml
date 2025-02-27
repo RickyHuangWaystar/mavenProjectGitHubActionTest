@@ -91,14 +91,4 @@ jobs:
     - name: maven build
       run: |
             jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
-     #       mvn clean install  # This is assuming you are using Maven for building
-
-    - name: Build the project (if needed)
-      run: |
-        # Replace with your build steps (for example, Maven, Gradle, etc.)
-        mvn clean package  # Assuming you are using Maven to build your artifact
-
-    - name: Upload artifact to Artifactory
-      run: |
-        jfrog rt upload "target/accountEventdemo-0.0.1-SNAPSHOT.war" "libs-release-local/com/mycompany/my-artifact/1.0.0/my-artifact-1.0.0.jar"
-        # Adjust the paths as per your needs
+            jf mvn deploy
