@@ -92,3 +92,4 @@ jobs:
       run: |
             jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
             jf mvn deploy
+            jf rt bp
