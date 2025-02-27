@@ -157,6 +157,6 @@ jobs:
     - name: maven build
       run: |
             jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
-            jfrog rt mvn clean install
+            jfrog rt mvn clean install deploy -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
             #jf mvn deploy
             #jf rt bp
