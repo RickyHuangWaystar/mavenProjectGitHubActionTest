@@ -9,15 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+	<!-- Distribution Management Section -->
 	<distributionManagement>
 		<repository>
-			<id>central</id>
-			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
+			<id>artifactory-release</id> <!-- This matches the server ID in settings.xml -->
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
 		</repository>
 		<snapshotRepository>
-			<id>snapshots</id>
-			<name>a0s952rz19mzu-artifactory-primary-0-snapshots</name>
+			<id>artifactory-snapshot</id> <!-- This matches the server ID in settings.xml -->
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>
 		</snapshotRepository>
 	</distributionManagement>
