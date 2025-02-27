@@ -88,22 +88,10 @@ jobs:
         JF_USER: ${{ secrets.JFROG_USER }}
         JF_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
 
-    #- name: maven build
-    #  run: |
-       #     jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
-        #    jf mvn deploy
-       #     jf rt bp # (optional, deploy build info, use --dry-run flag to see the build info in console without committing it)
-       # Step 5: Maven Build and Deploy
-    - name: Build and Deploy with Maven and JFrog CLI
+    - name: maven build
       run: |
-        # Set repository URLs
-        jf mvn-config --repo-deploy-releases=https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release-local --repo-deploy-snapshots=https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot-local
-        
-        # Build and deploy Maven artifacts with JFrog CLI
-        jf mvn deploy --build="my-build-${{ github.sha }}" --deployArtifacts=true
+            jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
+            jf mvn deploy
+            jf rt bp # (optional, deploy build info, use --dry-run flag to see the build info in console without committing it)
 
-    # Optional: Upload Build Info to Artifactory (if needed)
-    - name: Upload build info to Artifactory
-      run: |
-        jf rt build-publish "my-build-${{ github.sha }}" --url=https://trialzjb0sy.jfrog.io/artifactory
           
