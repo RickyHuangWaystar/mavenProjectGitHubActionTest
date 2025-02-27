@@ -60,22 +60,22 @@ jobs:
     # GITHUB: Only sends email to the receipent who triggered the workflow.
 
     # Code Coverage Report
-    - name: Upload JaCoCo Code Coverage Report
-      uses: actions/upload-artifact@v4
-      with:
-        name: JaCoCo Code Coverage Report
-        path: target/site/jacoco/
-        if-no-files-found: error
-        retention-days: 90  
+    #- name: Upload JaCoCo Code Coverage Report
+    #  uses: actions/upload-artifact@v4
+    #  with:
+    #    name: JaCoCo Code Coverage Report
+    #    path: target/site/jacoco/
+    #    if-no-files-found: error
+    #    retention-days: 90  
     # DEFAULT 90 days, Enterprise can confiture up to 400 days
     # Depdendency Vulnerability Analysis
-    - name: Upload Dependency Check Report
-      uses: actions/upload-artifact@v4
-      with:
-        name: Dependency Check Report
-        path: target/dependency-check-report.html
-        if-no-files-found: error
-        retention-days: 90  
+    #- name: Upload Dependency Check Report
+    #  uses: actions/upload-artifact@v4
+    #  with:
+    #    name: Dependency Check Report
+    #    path: target/dependency-check-report.html
+    #    if-no-files-found: error
+    #    retention-days: 90  
 
     # TODO DEPLOY ARTIFACTS to Artifcatory
     - name: Setup JFrog CLI
@@ -91,7 +91,7 @@ jobs:
     - name: maven build
       run: |
             jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
-            jf mvn deploy
+            jf mvn deploy --deployArtifacts=true
             jf rt bp # (optional, deploy build info, use --dry-run flag to see the build info in console without committing it)
 
           
