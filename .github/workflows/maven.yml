@@ -91,12 +91,12 @@ jobs:
         echo "</settings>" >> ~/.m2/settings.xml
 
     #   # Upload Maven build artifacts to GitHub Actions Artifacts
-    - name: Upload settings file artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: maven-artifacts
-        path: |
-          ~/.m2/settings.xml
+    # - name: Upload settings file artifacts
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: maven-artifacts
+    #     path: |
+    #       ~/.m2/settings.xml
          
 
     # Jenkins Prestep: GET_SVN_LOG.sh - script gets last 90 days of checkins and writes them to a 
@@ -118,8 +118,11 @@ jobs:
     # TODO What is GlobalRecondoMavenSettings.xml
     # BUILD, RUN UNIT TEST, RUN JaCoCo, Run Dependency Check
     - name: Build with Maven
-      run: mvn clean install deploy -U
+      run: mvn clean install -U
     #  run: mvn clean install deploy -U -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
+
+    - name: Deploy with Maven
+      run: mvn deploy
 
     # JENKINS: Post steps: Run only if build is succee
     # By default, a GitHub Actions workflow will stop if a step fails
@@ -143,28 +146,3 @@ jobs:
     #    path: target/dependency-check-report.html
     #    if-no-files-found: error
     #    retention-days: 90  
-
-    # TODO DEPLOY ARTIFACTS to Artifcatory
-   # - name: Setup JFrog CLI
-    #  uses: jfrog/setup-jfrog-cli@v4
-    #  with:
-     #   version: latest
-    #  env:
-        # JFrog Platform url and authentication credentials
-       # JF_URL: ${{ secrets.JFROG_URL }}
-      #  JF_USER: ${{ secrets.JFROG_USER }}
-       # JF_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
-
-    #- name: maven build
-    #  run: |
-   # - name: Deploy to Artifactory
-    #  run: |
-        #jf mvn-config --repo-deploy-releases=${ARTIFACTORY_RELEASE} --repo-deploy-snapshots=${ARTIFACTORY_SNAPSHOT}
-      #  jf mvn-config --repo-deploy-releases=https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release --repo-deploy-snapshots=https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot
-     #   jf rt mvn clean install deploy -DskipTests -s ~/.m2/settings.xml -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
-
-
-            
-            #jfrog rt mvn clean install deploy -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true
-            #jf mvn deploy
-            #jf rt bp
