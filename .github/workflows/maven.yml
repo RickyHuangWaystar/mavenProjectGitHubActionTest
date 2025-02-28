@@ -108,7 +108,6 @@ jobs:
     # GitHub Actions: Script to fetch commits for the last 90 days and write to a log file
     - name: Get Commits for the Last 90 Days 
       run: |
-         Calculate the date 90 days ago
          START_DATE=$(date +"%Y-%m-%d" -d "-90 days")
          git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" --date=short --name-only | awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " "$0}}' >  ${{ github.event.repository.name }}_commits_last_90_days.log
     - name: Upload Commit Log as Artifact
