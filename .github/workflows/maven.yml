@@ -13,11 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     # Jenkins Source Code Mangement: SVN 
     # GHA: Check out project from Git Repo
     - uses: actions/checkout@v4 
       with:
         fetch-depth: '0' # To get all commit history
+        
     # Set up Java
     - name: Set up JDK 17
       uses: actions/setup-java@v4 
@@ -100,37 +102,40 @@ jobs:
     #       ~/.m2/settings.xml
          
 
-    # Jenkins Prestep: GET_SVN_LOG.sh - script gets last 90 days of checkins and writes them to a 
+    # Jenkins Prestep:
+    # GET_SVN_LOG.sh - script gets last 90 days of checkins and writes them to a 
     # file called: "svn_" + {service name} + "." + {svn revision #} + ".log"
     # GHA: Run git log to get the 90 
-    #- name: Get Commits for the Last 90 Days
-    #  run: |
-    #    # Calculate the date 90 days ago
-    #    START_DATE=$(date +"%Y-%m-%d" -d "-90 days")
-    #    # Fetch commits for the last 90 days and write to a log file
-    #    git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" --date=short --name-only | awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " "$0}}' >  ${{ github.event.repository.name }}_commits_last_90_days.log
-    #- name: Upload Commit Log as Artifact
-    #  uses: actions/upload-artifact@v4
-    #  with:
-    #    name: ${{ github.event.repository.name }} Commits Last 90 Days Log
-    #    path: ${{ github.event.repository.name }}_commits_last_90_days.log
-
+    - name: Get Commits for the Last 90 Days
+      run: |
+       Calculate the date 90 days ago
+       START_DATE=$(date +"%Y-%m-%d" -d "-90 days")
+       Fetch commits for the last 90 days and write to a log file
+       git log --since="$START_DATE" --pretty=format:"Commit: %H%nAuthor: %an <%ae>%nDate: %ad%nMessage: %s%nChanged files:" --date=short --name-only | awk 'BEGIN {FS="n"} {if ($0 ~ /Changed files:/) {print $0} else {print " "$0}}' >  ${{ github.event.repository.name }}_commits_last_90_days.log
+    - name: Upload Commit Log as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+       name: ${{ github.event.repository.name }} Commits Last 90 Days Log
+       path: ${{ github.event.repository.name }}_commits_last_90_days.log
+    
     # Jenkins: clean install -U
-
-    # BUILD, RUN UNIT TEST, RUN JaCoCo, Run Dependency Check
+    # Build, test, code coverage, depdency check
     - name: Build with Maven
       run: mvn clean install -U
 
+    # JENKINS: Post steps: Run only if build is succeeds
     # By default, a GitHub Actions workflow will stop if a step fails
     # JENKINS: Set email notifcation to specific receipents.
     # GITHUB: Only sends email to the receipent who triggered the workflow.
 
-    # JENKINS: Post steps: Run only if build is succeeds
-    # 
-    - name: Deploy with Maven
+    # Post-build Actions: 
+    # 1. Deploy artifacts to Artifactory 
+    # 2. Record Code Coverage Report
+    # 3. Publish Dependency Check Results
+
+    - name: Deploy artifacts to Artifactory
       run: mvn deploy
 
-    # Code Coverage Report
     - name: Upload JaCoCo Code Coverage Report
       uses: actions/upload-artifact@v4
       with:
@@ -139,7 +144,6 @@ jobs:
         if-no-files-found: error
         retention-days: 90   # DEFAULT 90 days, Enterprise can confiture up to 400 days
    
-    # Depdendency Vulnerability Analysis
     - name: Upload Dependency Check Report
       uses: actions/upload-artifact@v4
       with:
