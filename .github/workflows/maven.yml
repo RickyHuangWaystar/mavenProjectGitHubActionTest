@@ -46,6 +46,10 @@ jobs:
         mkdir -p ~/.m2
         cp shared-settings/settings.xml ~/.m2/settings.xml
 
+    - name: Replace secrets in settings.xml
+      run: |
+        sed -i 's|${{ secrets.JFROG_USER }}|actual_user_value|' ~/.m2/settings.xml
+        sed -i 's|${{ secrets.JFROG_PASSWORD }}|actual_password_value|' ~/.m2/settings.xml
 
      # GlobalRecondoMavenSettings.xml
     # - name: Create .m2/settings.xml
