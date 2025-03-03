@@ -105,13 +105,13 @@ jobs:
     #     echo "  </activeProfiles>" >> ~/.m2/settings.xml
     #     echo "</settings>" >> ~/.m2/settings.xml
 
-    #   # Upload Maven build artifacts to GitHub Actions Artifacts
-    # - name: Upload settings file artifacts
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: maven-artifacts
-    #     path: |
-    #       ~/.m2/settings.xml
+      # Upload Maven build artifacts to GitHub Actions Artifacts
+    - name: Upload settings file artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: maven-artifacts
+        path: |
+          ~/.m2/settings.xml
          
 
     # Jenkins Prestep:
