@@ -35,79 +35,79 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
 
-    - name: Checkout shared-settings repository
-      uses: actions/checkout@v4
-      with:
-        repository: RickyHuangWaystar/shared-settings
-        path: shared-settings
+    # - name: Checkout shared-settings repository
+    #   uses: actions/checkout@v4
+    #   with:
+    #     repository: RickyHuangWaystar/shared-settings
+    #     path: shared-settings
     
-    - name: Copy settings.xml to ~/.m2
-      run: |
-        mkdir -p ~/.m2
-        cp shared-settings/settings.xml ~/.m2/settings.xml
-
-    - name: Replace secrets in settings.xml
-      run: |
-        sed -i 's|${{ secrets.JFROG_USER }}|actual_user_value|' ~/.m2/settings.xml
-        sed -i 's|${{ secrets.JFROG_PASSWORD }}|actual_password_value|' ~/.m2/settings.xml
-
-     # GlobalRecondoMavenSettings.xml
-    # - name: Create .m2/settings.xml
+    # - name: Copy settings.xml to ~/.m2
     #   run: |
     #     mkdir -p ~/.m2
-    #     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" > ~/.m2/settings.xml
-    #     echo "<settings>" >> ~/.m2/settings.xml
-    #     echo "  <mirrors>" >> ~/.m2/settings.xml
-    #     echo "    <mirror>" >> ~/.m2/settings.xml
-    #     echo "      <id>artifactory-release</id>" >> ~/.m2/settings.xml
-    #     echo "      <mirrorOf>central</mirrorOf>" >> ~/.m2/settings.xml
-    #     echo "      <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>" >> ~/.m2/settings.xml
-    #     echo "      <blocked>false</blocked>" >> ~/.m2/settings.xml
-    #     echo "    </mirror>" >> ~/.m2/settings.xml
-    #     echo "    <mirror>" >> ~/.m2/settings.xml
-    #     echo "      <id>artifactory-snapshot</id>" >> ~/.m2/settings.xml
-    #     echo "      <mirrorOf>external:*</mirrorOf>" >> ~/.m2/settings.xml
-    #     echo "      <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>" >> ~/.m2/settings.xml
-    #     echo "      <blocked>false</blocked>" >> ~/.m2/settings.xml
-    #     echo "    </mirror>" >> ~/.m2/settings.xml
-    #     echo "  </mirrors>" >> ~/.m2/settings.xml
-    #     echo "  <servers>" >> ~/.m2/settings.xml
-    #     echo "    <server>" >> ~/.m2/settings.xml
-    #     echo "      <id>artifactory-release</id>" >> ~/.m2/settings.xml
-    #     echo "      <username>${{ secrets.JFROG_USER }}</username>" >> ~/.m2/settings.xml
-    #     echo "      <password>${{ secrets.JFROG_PASSWORD }}</password>" >> ~/.m2/settings.xml
-    #     echo "    </server>" >> ~/.m2/settings.xml
-    #     echo "    <server>" >> ~/.m2/settings.xml
-    #     echo "      <id>artifactory-snapshot</id>" >> ~/.m2/settings.xml
-    #     echo "      <username>${{ secrets.JFROG_USER }}</username>" >> ~/.m2/settings.xml
-    #     echo "      <password>${{ secrets.JFROG_PASSWORD }}</password>" >> ~/.m2/settings.xml
-    #     echo "    </server>" >> ~/.m2/settings.xml
-    #     echo "  </servers>" >> ~/.m2/settings.xml
-    #     echo "  <profiles>" >> ~/.m2/settings.xml
-    #     echo "    <profile>" >> ~/.m2/settings.xml
-    #     echo "      <id>artifactory</id>" >> ~/.m2/settings.xml
-    #     echo "      <repositories>" >> ~/.m2/settings.xml
-    #     echo "        <repository>" >> ~/.m2/settings.xml
-    #     echo "          <id>recondo-demo-libs-release</id>" >> ~/.m2/settings.xml
-    #     echo "          <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>" >> ~/.m2/settings.xml
-    #     echo "          <releases>" >> ~/.m2/settings.xml
-    #     echo "            <enabled>true</enabled>" >> ~/.m2/settings.xml
-    #     echo "          </releases>" >> ~/.m2/settings.xml
-    #     echo "        </repository>" >> ~/.m2/settings.xml
-    #     echo "        <repository>" >> ~/.m2/settings.xml
-    #     echo "          <id>recondo-demo-libs-snapshot</id>" >> ~/.m2/settings.xml
-    #     echo "          <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>" >> ~/.m2/settings.xml
-    #     echo "          <snapshots>" >> ~/.m2/settings.xml
-    #     echo "            <enabled>true</enabled>" >> ~/.m2/settings.xml
-    #     echo "          </snapshots>" >> ~/.m2/settings.xml
-    #     echo "        </repository>" >> ~/.m2/settings.xml
-    #     echo "      </repositories>" >> ~/.m2/settings.xml
-    #     echo "    </profile>" >> ~/.m2/settings.xml
-    #     echo "  </profiles>" >> ~/.m2/settings.xml
-    #     echo "  <activeProfiles>" >> ~/.m2/settings.xml
-    #     echo "    <activeProfile>artifactory</activeProfile>" >> ~/.m2/settings.xml
-    #     echo "  </activeProfiles>" >> ~/.m2/settings.xml
-    #     echo "</settings>" >> ~/.m2/settings.xml
+    #     cp shared-settings/settings.xml ~/.m2/settings.xml
+
+    # - name: Replace secrets in settings.xml
+    #   run: |
+    #     sed -i 's|${{ secrets.JFROG_USER }}|actual_user_value|' ~/.m2/settings.xml
+    #     sed -i 's|${{ secrets.JFROG_PASSWORD }}|actual_password_value|' ~/.m2/settings.xml
+
+     # GlobalRecondoMavenSettings.xml
+    - name: Create .m2/settings.xml
+      run: |
+        mkdir -p ~/.m2
+        echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" > ~/.m2/settings.xml
+        echo "<settings>" >> ~/.m2/settings.xml
+        echo "  <mirrors>" >> ~/.m2/settings.xml
+        echo "    <mirror>" >> ~/.m2/settings.xml
+        echo "      <id>artifactory-release</id>" >> ~/.m2/settings.xml
+        echo "      <mirrorOf>central</mirrorOf>" >> ~/.m2/settings.xml
+        echo "      <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>" >> ~/.m2/settings.xml
+        echo "      <blocked>false</blocked>" >> ~/.m2/settings.xml
+        echo "    </mirror>" >> ~/.m2/settings.xml
+        echo "    <mirror>" >> ~/.m2/settings.xml
+        echo "      <id>artifactory-snapshot</id>" >> ~/.m2/settings.xml
+        echo "      <mirrorOf>external:*</mirrorOf>" >> ~/.m2/settings.xml
+        echo "      <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>" >> ~/.m2/settings.xml
+        echo "      <blocked>false</blocked>" >> ~/.m2/settings.xml
+        echo "    </mirror>" >> ~/.m2/settings.xml
+        echo "  </mirrors>" >> ~/.m2/settings.xml
+        echo "  <servers>" >> ~/.m2/settings.xml
+        echo "    <server>" >> ~/.m2/settings.xml
+        echo "      <id>artifactory-release</id>" >> ~/.m2/settings.xml
+        echo "      <username>${{ secrets.JFROG_USER }}</username>" >> ~/.m2/settings.xml
+        echo "      <password>${{ secrets.JFROG_PASSWORD }}</password>" >> ~/.m2/settings.xml
+        echo "    </server>" >> ~/.m2/settings.xml
+        echo "    <server>" >> ~/.m2/settings.xml
+        echo "      <id>artifactory-snapshot</id>" >> ~/.m2/settings.xml
+        echo "      <username>${{ secrets.JFROG_USER }}</username>" >> ~/.m2/settings.xml
+        echo "      <password>${{ secrets.JFROG_PASSWORD }}</password>" >> ~/.m2/settings.xml
+        echo "    </server>" >> ~/.m2/settings.xml
+        echo "  </servers>" >> ~/.m2/settings.xml
+        echo "  <profiles>" >> ~/.m2/settings.xml
+        echo "    <profile>" >> ~/.m2/settings.xml
+        echo "      <id>artifactory</id>" >> ~/.m2/settings.xml
+        echo "      <repositories>" >> ~/.m2/settings.xml
+        echo "        <repository>" >> ~/.m2/settings.xml
+        echo "          <id>recondo-demo-libs-release</id>" >> ~/.m2/settings.xml
+        echo "          <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>" >> ~/.m2/settings.xml
+        echo "          <releases>" >> ~/.m2/settings.xml
+        echo "            <enabled>true</enabled>" >> ~/.m2/settings.xml
+        echo "          </releases>" >> ~/.m2/settings.xml
+        echo "        </repository>" >> ~/.m2/settings.xml
+        echo "        <repository>" >> ~/.m2/settings.xml
+        echo "          <id>recondo-demo-libs-snapshot</id>" >> ~/.m2/settings.xml
+        echo "          <url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>" >> ~/.m2/settings.xml
+        echo "          <snapshots>" >> ~/.m2/settings.xml
+        echo "            <enabled>true</enabled>" >> ~/.m2/settings.xml
+        echo "          </snapshots>" >> ~/.m2/settings.xml
+        echo "        </repository>" >> ~/.m2/settings.xml
+        echo "      </repositories>" >> ~/.m2/settings.xml
+        echo "    </profile>" >> ~/.m2/settings.xml
+        echo "  </profiles>" >> ~/.m2/settings.xml
+        echo "  <activeProfiles>" >> ~/.m2/settings.xml
+        echo "    <activeProfile>artifactory</activeProfile>" >> ~/.m2/settings.xml
+        echo "  </activeProfiles>" >> ~/.m2/settings.xml
+        echo "</settings>" >> ~/.m2/settings.xml
 
       # Upload Maven build artifacts to GitHub Actions Artifacts
     - name: Upload settings file artifacts
