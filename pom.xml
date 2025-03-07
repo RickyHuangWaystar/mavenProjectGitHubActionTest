@@ -27,7 +27,7 @@
 			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
 			<releases>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</releases>
 		</repository>
 		<repository>
