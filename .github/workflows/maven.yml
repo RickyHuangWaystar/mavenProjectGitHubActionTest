@@ -51,12 +51,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     # Cache to improve the workflow execution time    
-    - name: Cache Maven packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
+    # - name: Cache Maven packages
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: ~/.m2
+    #     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+    #     restore-keys: ${{ runner.os }}-m2
          
     # Jenkins Prestep:
     # GET_SVN_LOG.sh - script gets last 90 days of checkins and writes them to a 
