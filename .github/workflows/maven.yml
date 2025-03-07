@@ -22,26 +22,26 @@ jobs:
 
     # Shared settings.xml for recondo projects
     # GlobalRecondoMavenSettings.xml 
-    # - name: Checkout shared-settings repository
-    #   uses: actions/checkout@v4
-    #   with:
-    #     repository: RickyHuangWaystar/shared-settings
-    #     path: shared-settings
+    - name: Checkout shared-settings repository
+      uses: actions/checkout@v4
+      with:
+        repository: RickyHuangWaystar/shared-settings
+        path: shared-settings
     
-    # - name: Copy settings.xml to ~/.m2
-    #   run: |
-    #     mkdir -p ~/.m2
-    #     cp shared-settings/settings.xml ~/.m2/settings.xml
-    # - name: Checkout shared-settings repository
-    #   uses: actions/checkout@v4
-    #   with:
-    #     repository: RickyHuangWaystar/shared-settings
-    #     path: shared-settings
+    - name: Copy settings.xml to ~/.m2
+      run: |
+        mkdir -p ~/.m2
+        cp shared-settings/settings.xml ~/.m2/settings.xml
+    - name: Checkout shared-settings repository
+      uses: actions/checkout@v4
+      with:
+        repository: RickyHuangWaystar/shared-settings
+        path: shared-settings
     
-    # - name: Copy settings.xml to ~/.m2
-    #   run: |
-    #     mkdir -p ~/.m2
-    #     cp shared-settings/settings.xml ~/.m2/settings.xml
+    - name: Copy settings.xml to ~/.m2
+      run: |
+        mkdir -p ~/.m2
+        cp shared-settings/settings.xml ~/.m2/settings.xml
         
     # Set up Java
     - name: Set up JDK 17
