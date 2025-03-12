@@ -20,28 +20,28 @@ jobs:
       with:
         fetch-depth: '0' # To get all commit history
 
-    # Shared settings.xml for recondo projects
-    # GlobalRecondoMavenSettings.xml 
-    - name: Checkout shared-settings repository
-      uses: actions/checkout@v4
-      with:
-        repository: RickyHuangWaystar/shared-settings
-        path: shared-settings
+    # # Shared settings.xml for recondo projects
+    # # GlobalRecondoMavenSettings.xml 
+    # - name: Checkout shared-settings repository
+    #   uses: actions/checkout@v4
+    #   with:
+    #     repository: RickyHuangWaystar/shared-settings
+    #     path: shared-settings
     
-    - name: Copy settings.xml to ~/.m2
-      run: |
-        mkdir -p ~/.m2
-        cp shared-settings/settings.xml ~/.m2/settings.xml
-    - name: Checkout shared-settings repository
-      uses: actions/checkout@v4
-      with:
-        repository: RickyHuangWaystar/shared-settings
-        path: shared-settings
+    # - name: Copy settings.xml to ~/.m2
+    #   run: |
+    #     mkdir -p ~/.m2
+    #     cp shared-settings/settings.xml ~/.m2/settings.xml
+    # - name: Checkout shared-settings repository
+    #   uses: actions/checkout@v4
+    #   with:
+    #     repository: RickyHuangWaystar/shared-settings
+    #     path: shared-settings
     
-    - name: Copy settings.xml to ~/.m2
-      run: |
-        mkdir -p ~/.m2
-        cp shared-settings/settings.xml ~/.m2/settings.xml
+    # - name: Copy settings.xml to ~/.m2
+    #   run: |
+    #     mkdir -p ~/.m2
+    #     cp shared-settings/settings.xml ~/.m2/settings.xml
         
     # Set up Java
     - name: Set up JDK 17
@@ -51,12 +51,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     #Cache to improve the workflow execution time    
-    - name: Cache Maven packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
+    # - name: Cache Maven packages
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: ~/.m2
+    #     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+    #     restore-keys: ${{ runner.os }}-m2
          
     # Jenkins Prestep:
     # GET_SVN_LOG.sh - script gets last 90 days of checkins and writes them to a 
