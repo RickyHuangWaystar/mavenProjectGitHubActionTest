@@ -103,5 +103,13 @@ jobs:
       with:
         name: Dependency Check Report
         path: target/dependency-check-report.html
-        if-no-files-found: error
-        retention-days: 90   # DEFAULT 90 days, Enterprise can confiture up to 400 days
+
+    - name: Add coverage to PR
+      id: jacoco
+      uses: madrapps/jacoco-report@v1.2
+      with:
+        paths: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        min-coverage-overall: 40
+        min-coverage-changed-files: 60 
+    
