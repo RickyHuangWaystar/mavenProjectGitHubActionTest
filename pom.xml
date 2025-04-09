@@ -11,7 +11,7 @@
 
 	<!-- Distribution Management Section -->
 <!-- 	<distributionManagement>
-		<repository>
+<!-- 		<repository>
 			<id>artifactory-release</id> <!-- This matches the server ID in settings.xml -->
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
 		</repository>
@@ -19,7 +19,7 @@
 			<id>artifactory-snapshot</id> <!-- This matches the server ID in settings.xml -->
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>
 		</snapshotRepository>
-	</distributionManagement> -->
+	</distributionManagement> --> -->
 
 <!-- 	<repositories>
 		<repository>
