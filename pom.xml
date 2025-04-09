@@ -10,7 +10,7 @@
 	</parent>
 
 	<!-- Distribution Management Section -->
-	<distributionManagement>
+<!-- 	<distributionManagement>
 		<repository>
 			<id>artifactory-release</id> <!-- This matches the server ID in settings.xml -->
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
@@ -19,9 +19,9 @@
 			<id>artifactory-snapshot</id> <!-- This matches the server ID in settings.xml -->
 			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>
 		</snapshotRepository>
-	</distributionManagement>
+	</distributionManagement> -->
 
-	<repositories>
+<!-- 	<repositories>
 		<repository>
 			<id>central</id>
 			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
@@ -39,7 +39,7 @@
 			</releases>
 		</repository>
 	</repositories>
-
+ -->
 
 	<groupId>services</groupId>
 	<artifactId>accountEventdemo</artifactId>
