@@ -9,38 +9,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<!-- Distribution Management Section -->
-<!-- 	<distributionManagement>
-<!-- 		<repository>
-			<id>artifactory-release</id> <!-- This matches the server ID in settings.xml -->
-			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
-		</repository>
-		<snapshotRepository>
-			<id>artifactory-snapshot</id> <!-- This matches the server ID in settings.xml -->
-			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>
-		</snapshotRepository>
-	</distributionManagement> --> -->
-
-<!-- 	<repositories>
-		<repository>
-			<id>central</id>
-			<name>a0s952rz19mzu-artifactory-primary-0-releases</name>
-			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-release</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-		<repository>
-			<id>snapshots</id>
-			<name>a0s952rz19mzu-artifactory-primary-0-snapshots</name>
-			<url>https://trialzjb0sy.jfrog.io/artifactory/recondo-demo-libs-snapshot</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-	</repositories>
- -->
-
 	<groupId>services</groupId>
 	<artifactId>accountEventdemo</artifactId>
 	<version>0.0.5-SNAPSHOT</version>
@@ -48,19 +16,7 @@
 	<name>Account Event Service DEMO</name>
 	<description>Demo project for Recondo Maven</description>
 
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+
 	<properties>
 		<java.version>1.8</java.version>
 		<!-- test -->
