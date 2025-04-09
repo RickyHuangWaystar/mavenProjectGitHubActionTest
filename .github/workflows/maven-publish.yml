@@ -4,8 +4,8 @@
 name: Maven CICD
 
 on:
-  push: # push to main
-    branches: [ "main" ]
+ # push: # push to main
+  #  branches: [ "main" ]
   workflow_dispatch: # manual trigger
 
 jobs:
